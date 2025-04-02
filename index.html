@@ -3,11 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="stylesheet" href="style.css">
-        <script src="script.js"></script>
         <title>TFT</title>
     </head>
 
     <body>
+        <div>
+            <h2>Inscription</h2>
+            <form id="inscriptionForm" action="C:\xampp\htdocs\inscription.php" method="post">
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" id="username" name="username" required>
+                <br><br>
 
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+                <br><br>
+
+                <input type="submit" value="S'inscrire">
+        </div>
+
+        <script src="script.js"></script>
     </body>
 </html>
