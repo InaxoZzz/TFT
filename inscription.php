@@ -6,19 +6,26 @@ if ($connexion->connect_error) {
 
 if (!empty($_POST["username"]) && !empty($_POST["password"])) {
     $login = $_POST["username"];
-    $password = $_POST["password"];
+    $mot_de_passe = $_POST["password"];
 
     // Vérification de l'existence de l'utilisateur
-    $stmt = $connexion->prepare("SELECT * FROM utilisateurs WHERE login = ?");
-    $requete = $connexion->prepare($stmt);
+    $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE login = ?");
+    $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE login = ?");
     $requete->bind_param("s", $login);
     $requete->execute();
-    $result = $stmt->get_result();
+    $result = $requete->get_result();
 
     if ($result->num_rows > 0) {
         echo "L'utilisateur existe déjà.";
     } else {
-       $requete->close();
+       $stmt = $connexion->prepare("INSERT INTO utilisateurs (login, mot_de_passe) VALUES (?, ?)");
+       $stmt->bind_param("ss", $login, $mot_de_passe);
+
+       if ($stmt->execute()) {
+        echo "Inscription réussie !";
+       } else {
+        echo "Erreur lors de l'inscription.";
+       }
     }
 } else {
     echo "Veuillez remplir tous les champs.";
