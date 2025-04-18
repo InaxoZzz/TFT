@@ -1,4 +1,4 @@
-#main{
+.main{
     background-color: #1D1E20;
 }
 
@@ -30,5 +30,13 @@
 
 #header h2{
     position: relative;
+    color: white;
+}
+
+#inscription{
+    color: white;
+}
+
+#connexion{
     color: white;
 }
