@@ -1,42 +1,73 @@
-.main{
+body{
+    margin: 0;
+    padding:0;
     background-color: #1D1E20;
+    color: #FFFFFF;
+    font-family: Arial;
 }
 
-#header_container{
-    align-items: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-width: 100%;
-    position: relative;
-    width: 100%;
+
+#nav_accueil{
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #444;
+    margin-bottom: 50px;
 }
 
-#header{
-    align-items: stretch;
-    background-color: #25262a;
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 100%;
-    width: 100%;
+.nav_container{
+    display: inline-block;
+    text-align: left;
+    white-space: nowrap; /*empêche les retours à la ligne*/
 }
 
-#header h1{
-    position: relative;
-    color: white;
+#titre{
+    display: inline-block;
+    margin-right: 50px;
+    font-size: 24px;
 }
 
-#header h2{
-    position: relative;
-    color: white;
+#accueil{
+    text-decoration: none;
+    color: #FFFFFF;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 50px; /* espace entre chaque liste */
+}
+
+#nav_liens{
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+#nav_liens li{
+    display: inline-block;
+    margin: 0 10px;
+}
+
+#nav_liens a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+
+#container_accueil{
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+#container_compos{
+    margin-left: 10px;
+}
+
+
+#connexion{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #inscription{
-    color: white;
-}
-
-#connexion{
-    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
 }

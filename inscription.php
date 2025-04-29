@@ -1,33 +1,62 @@
 <?php
-$connexion = new mysqli("localhost", "root", "", "base_connexion");
+// Connexion à la base de données MySQL (XAMPP inclut MySQL par défaut)
+$serveur = "localhost";
+$utilisateur = "root"; // Nom d'utilisateur par défaut de XAMPP
+$mot_de_passe = ""; // Laissez le mot de passe vide par défaut de XAMPP
+$base_de_donnees = "base_connexion"; // Remplacez par le nom de votre base de données
+
+$connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
+
+// Vérifier la connexion
 if ($connexion->connect_error) {
-    die("Erreur de la connexion : " . $connexion->connect_error);
+    die("Échec de la connexion : " . $connexion->connect_error);
 }
 
-if (!empty($_POST["username"]) && !empty($_POST["password"])) {
-    $login = $_POST["username"];
-    $mot_de_passe = $_POST["password"];
+if (!empty($_POST["login"]) && !empty($_POST["password"])) {
+    $login = $_POST["login"];
+    $password = $_POST["password"];
 
-    // Vérification de l'existence de l'utilisateur
-    $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE login = ?");
-    $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE login = ?");
-    $requete->bind_param("s", $login);
-    $requete->execute();
-    $result = $requete->get_result();
+// Vérifier si le login existe déjà
+// requête préparé
+$sql = "SELECT * FROM utilisateurs WHERE login = ?";
+// préparation de la connexion à la base sql
+$requete = $connexion -> prepare($sql);
+// lier la variable $login à la requête
+    $requete -> bind_param("s", $login);
+// exécuter la requête
+    $requete -> execute();
+// récupération du résultat de la requête
+    $resultat = $requete->get_result();
 
-    if ($result->num_rows > 0) {
-        echo "L'utilisateur existe déjà.";
-    } else {
-       $stmt = $connexion->prepare("INSERT INTO utilisateurs (login, mot_de_passe) VALUES (?, ?)");
-       $stmt->bind_param("ss", $login, $mot_de_passe);
+// si le résultat contient des lignes c'est que le login existe déjà
+    if ($resultat -> num_rows > 0) {
+        echo "Ce login est déjà pris. <a href='test.html'>Essayez un autre login</a>.";
+    } 
+else {
+        // Fermer la première requête
+        $requete->close();
 
-       if ($stmt->execute()) {
-        echo "Inscription réussie !";
-       } else {
-        echo "Erreur lors de l'inscription.";
-       }
+        // Hachage du mot de passe avant insertion
+        $mot_de_passe = password_hash($password, PASSWORD_DEFAULT);  // Hachage sécurisé
+
+        // Insérer le nouvel utilisateur
+        $sql = "INSERT INTO utilisateurs (login, mot_de_passe) VALUES (?, ?)";
+        $requete = $connexion -> prepare($sql);
+        $requete -> bind_param("ss", $login, $mot_de_passe);
+        
+        if ($requete->execute()) {
+            echo "Inscription réussie ! <a href='connexion.html'>Se connecter</a>";
+        } else {
+            echo "Erreur lors de l'inscription : " . $requete->error;
+        }
     }
-} else {
+
+    // Fermer la requête et la connexion
+    $requete -> close();
+} 
+else {
     echo "Veuillez remplir tous les champs.";
 }
+
+$connexion->close();
 ?>
