@@ -30,7 +30,7 @@ $requete = $connexion -> prepare($sql);
 
 // si le résultat contient des lignes c'est que le login existe déjà
     if ($resultat -> num_rows > 0) {
-        echo "Ce login est déjà pris. <a href='test.html'>Essayez un autre login</a>.";
+        echo "Ce login est déjà pris. <a href='inscription.html'>Essayez un autre login</a>.";
     } 
 else {
         // Fermer la première requête
@@ -60,3 +60,11 @@ else {
 
 $connexion->close();
 ?>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Inscription</title>
+    </head>
+    <body style="background-color: #1D1E20; font-family: Arial; color: #FFFFFF; text-align: center;"></body>
+</html>

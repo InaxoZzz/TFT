@@ -1,0 +1,94 @@
+#container_compos{
+    width: 615px;
+    margin: auto;
+}
+
+.compo{
+    padding-top: 1px;
+    margin-bottom: 10px;
+    background-color: rgb(39,40,43);
+    width: 615px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid black;
+}
+
+.champion_img{
+    display: inline-block;
+    font-size: 11px;
+    text-align: center;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.champion_img .one_cost {
+    display: block;
+    margin: 0 auto; /* centre l’image horizontalement dans le bloc */
+    height: 42px;
+    width: 42px;
+}
+
+.champion_img .two_cost {
+    display: block;
+    margin: 0 auto;
+    height: 42px;
+    width: 42px;
+}
+
+.champion_img .three_cost {
+    display: block;
+    margin: 0 auto;
+    height: 42px;
+    width: 42px;
+}
+
+.champion_img .four_cost {
+    display: block;
+    margin: 0 auto;
+    height: 42px;
+    width: 42px;
+}
+
+.champion_img .five_cost {
+    display: block;
+    margin: 0 auto;
+    height: 42px;
+    width: 42px;
+}
+
+.one_cost{
+    width: 42px;
+    height: 42px;
+    border: 2px solid gray;
+}
+
+.two_cost{
+    width: 42px;
+    height: 42px;
+    border: 2px solid green;
+}
+
+.three_cost{
+    width: 42px;
+    height: 42px;
+    border: 2px solid blue;
+
+}
+
+.four_cost{
+    width: 42px;
+    height: 42px;
+    border: 2px solid purple;
+
+}
+
+.five_cost{
+    width: 42px;
+    height: 42px;
+    border: 2px solid orange;
+}
+
+img{
+    height: 42px;
+    width: 42px;
+}
