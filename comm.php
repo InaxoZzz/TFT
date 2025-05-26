@@ -1,10 +1,12 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
 
 $serveur = "localhost";
 $utilisateur = "root";
 $mot_de_passe = "";
-$base_de_donnees = "base_de_donnees";
+$base_de_donnees = "base_connexion";
 
 $connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
 
@@ -61,7 +63,7 @@ $resultat = $connexion->query($sql);
                             <a href="tournois.php">Tournois</a>
                         </li>
                         <li>
-                            <a href="comm.html">Commentaires</a>
+                            <a href="comm.php">Commentaires</a>
                         </li>
                         <li>
                             <a href="connexion.html">Se connecter</a>
@@ -90,10 +92,17 @@ $resultat = $connexion->query($sql);
         </div>
 
         <div id="liste_comm">
-            <?php foreach ($commentaires as $c): ?>
+            <?php
+            $commentaires = [];
+            if($resultat && $resultat->num_rows > 0){
+                while($row = $resultat->fetch_assoc()){
+                    $commentaires[] = $row;
+                }
+            }
+            foreach ($commentaires as $c): ?>
                 <div class="commentaire">
-                    <span class="login"><?= htmlspecialchars($c['login']) ?></span> — 
-                    <span class="date_post"><?= htmlspecialchars($c['date_post']) ?></span><br>
+                    <p class="login"><?= htmlspecialchars($c['login']) ?></p> — 
+                    <p class="date_post"><?= htmlspecialchars($c['date_post']) ?></p><br>
                     <?= nl2br(htmlspecialchars($c['commentaire'])) ?>
                 </div>
             <?php endforeach; ?>

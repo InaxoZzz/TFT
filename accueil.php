@@ -22,7 +22,7 @@
                             <a href="tournois.php">Tournois</a>
                         </li>
                         <li>
-                            <a href="comm.html">Commentaires</a>
+                            <a href="comm.php">Commentaires</a>
                         </li>
                         <li>
                             <a href="connexion.html">Se connecter</a>
@@ -31,7 +31,7 @@
                             <a href="inscription.html">S'inscrire</a>
                         </li>
                         <li>
-                            <?php include "header.php"; ?>
+                            <?php session_start(); include "header.php"; ?>
                         </li>
                     </ul>
                 </header>

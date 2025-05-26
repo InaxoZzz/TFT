@@ -40,7 +40,7 @@ else {
         $mot_de_passe = password_hash($password, PASSWORD_DEFAULT);  // Hachage sécurisé
 
         // Insérer le nouvel utilisateur
-        $sql = "INSERT INTO utilisateurs (login, mot_de_passe) VALUES (?, ?)";
+        $sql = "INSERT INTO utilisateurs (login, password) VALUES (?, ?)";
         $requete = $connexion -> prepare($sql);
         $requete -> bind_param("ss", $login, $mot_de_passe);
         

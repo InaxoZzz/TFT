@@ -18,7 +18,7 @@ if (!empty($_POST["username"]) && !empty($_POST["password"])) {
     if ($result->num_rows > 0) {
         $utilisateur = $result->fetch_assoc();
 
-        if (password_verify($password, $utilisateur["mot_de_passe"])) {
+        if (password_verify($password, $utilisateur["password"])) {
             $_SESSION["login"] = $login;
             header("Location: accueil.php");
             exit;
