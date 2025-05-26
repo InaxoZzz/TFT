@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <nav id="nav_accueil">
+    <nav id="nav_accueil">
             <div class="nav_container">
                 <header>
                     <h1 id="titre">
@@ -21,6 +21,9 @@
                         </li>
                         <li>
                             <a href="tournois.php">Tournois</a>
+                        </li>
+                        <li>
+                            <a href="comm.html">Commentaires</a>
                         </li>
                         <li>
                             <a href="connexion.html">Se connecter</a>
